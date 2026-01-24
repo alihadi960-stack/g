@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gardenia Suite — Firebase (JSONP)</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="title">Gardenia Suite</div>
+      <div class="sub">Firebase Hosting + Apps Script (JSONP)</div>
+    </div>
+
+    <div class="status">
+      <span id="dot" class="dot"></span>
+      <span id="statusText">غير متصل</span>
+    </div>
+
+    <div class="actions">
+      <button class="btn" id="btnPing">Ping</button>
+      <button class="btn" id="btnSettings">Settings</button>
+      <button class="btn" id="btnLogout" style="display:none">تسجيل خروج</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Login -->
+    <section id="secLogin" class="card">
+      <h2>تسجيل الدخول</h2>
+      <p class="hint">الدخول يكون بـ Username/Password من شيت Users (في Google Sheet) — الواجهة هنا فقط.</p>
+
+      <div class="grid">
+        <div>
+          <label>Username</label>
+          <input id="lgUser" placeholder="admin" autocomplete="username" />
+        </div>
+        <div>
+          <label>Password</label>
+          <input id="lgPass" type="password" placeholder="••••" autocomplete="current-password" />
+        </div>
+      </div>
+
+      <div class="row">
+        <button class="btn primary" id="btnLogin">دخول</button>
+      </div>
+
+      <div id="loginMsg" class="msg"></div>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="secApp" class="card" style="display:none">
+      <h2>لوحة التحكم</h2>
+      <p class="hint">هذه صفحة تشغيل (Starter). تقدر تنقل واجهتك الحالية هنا لاحقًا (index/styles/app.js) مع نفس دالة JSONP.</p>
+
+      <div class="grid">
+        <div class="kpi">
+          <div class="kpiLabel">Role</div>
+          <div id="meRole" class="kpiValue">—</div>
+        </div>
+        <div class="kpi">
+          <div class="kpiLabel">Token</div>
+          <div id="meToken" class="kpiValue mono">—</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <input id="dateInput" type="date" />
+        <button class="btn" id="btnLoadToday">عرض حجوزات اليوم</button>
+      </div>
+
+      <div id="todayList" class="list"></div>
+    </section>
+  </main>
+
+  <!-- Settings Modal -->
+  <div id="ov" class="overlay" style="display:none">
+    <div class="modal">
+      <div class="modalHead">
+        <h3>Settings</h3>
+        <button class="btn" id="btnCloseSettings">✖</button>
+      </div>
+
+      <label class="hint">Apps Script /exec URL</label>
+      <input id="apiUrlInput" placeholder="https://script.google.com/macros/s/.../exec" />
+
+      <div class="row" style="margin-top:12px">
+        <button class="btn primary" id="btnSaveSettings">حفظ</button>
+      </div>
+
+      <p class="hint" style="margin-top:10px">
+        ملاحظة: JSONP يعتمد على GET، فلو البيانات كبيرة جدًا قد تحتاج تقسيم/تبسيط الاستجابات.
+      </p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" style="display:none"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
