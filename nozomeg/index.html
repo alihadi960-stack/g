@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>نظم ERP — نظام متكامل لإدارة أعمالك | nozomeg.com</title>
+  <meta name="description" content="نظم ERP: نظام سحابي متكامل لإدارة المبيعات والفواتير الإلكترونية والمخزون والحسابات والموارد البشرية ونقاط البيع. ابدأ تجربتك المجانية 14 يومًا بدون بطاقة ائتمان." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- SVG sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></symbol>
+    <symbol id="i-arrow-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></symbol>
+    <symbol id="i-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9l8-5 8 5v10"/><path d="M9 19v-6h6v6"/></symbol>
+    <symbol id="i-invoice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 8-9-5-9 5 9 5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7M9 11h5"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-pos" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M7 8h4M7 12h10"/></symbol>
+    <symbol id="i-crm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+    <symbol id="i-factory" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20V8l6 4V8l6 4V8l6 4v8z"/><path d="M6 20v-4h4v4M14 20v-4h4v4"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+    <symbol id="i-store" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 5 3h14l2 6"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M5 12v9h14v-9M9 21v-6h6v6"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-5 4 3 5-7"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></symbol>
+    <symbol id="i-headset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.5V11H7v4h3v7h4v-7h3l1-4h-4V8.8c0-.5.3-.8 1-.8z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7.5 8.6L22 22h-6.8l-5.3-6.9L3.8 22H.8l8-9.2L.5 2h7l4.8 6.3zm-1.1 18h1.9L7.1 3.9H5.1z"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8.5H3.2V21h3.7zM5 3a2.1 2.1 0 1 0 0 4.3A2.1 2.1 0 0 0 5 3zm16 11c0-3.6-2-5.6-4.9-5.6-2 0-3.1 1.1-3.6 1.9V8.5h-3.7V21h3.7v-6.3c0-1.7.3-3.3 2.4-3.3 2 0 2 1.9 2 3.4V21H21z"/></symbol>
+    <symbol id="i-yt" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12 31 31 0 0 0 23 7.2zM9.8 15.1V8.9l6 3.1z"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9s-1.9-.9-3.2-.8c-1.6 0-3.1 1-4 2.4-1.7 2.9-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8 2.1-1.2 2.9-2.4c.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.5-1-2.5-3.9zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.2-.6 2.8-1.4z"/></symbol>
+    <symbol id="i-android" viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 3.4 13.7 12 3.6 20.6c-.3-.2-.5-.6-.5-1V4.4c0-.4.2-.8.5-1zM15 13.4l2.7 2.7-10.3 5.9zm0-2.8L7.4 2l10.3 5.9zm4.5 2.9-3-1.6 2.9-2.9 2.9 1.6c.9.5.9 1.4 0 1.9z"/></symbol>
+  </defs>
+</svg>
+
+<!-- Announcement -->
+<div class="announce">
+  🎉 عرض خاص: خصم 20% على الاشتراك السنوي لفترة محدودة
+  <a href="#pricing">اعرف التفاصيل</a>
+</div>
+
+<!-- Navbar -->
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="logo" aria-label="نظم ERP">
+      <span class="logo-mark"><svg><use href="#i-logo"/></svg></span>
+      <span>نظم<small>NOZOM ERP</small></span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="القائمة" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
+
+    <ul class="nav-menu" id="navMenu">
+      <li class="has-mega">
+        <button type="button" aria-haspopup="true">المنتجات <svg class="chev"><use href="#i-chev"/></svg></button>
+        <div class="mega">
+          <a href="#modules"><span class="ico tint-green"><svg><use href="#i-invoice"/></svg></span><div><b>المبيعات والفواتير</b><span>فواتير، عروض أسعار، تحصيل</span></div></a>
+          <a href="#modules"><span class="ico tint-blue"><svg><use href="#i-shield"/></svg></span><div><b>الفاتورة الإلكترونية</b><span>ربط معتمد مع مصلحة الضرائب</span></div></a>
+          <a href="#modules"><span class="ico tint-orange"><svg><use href="#i-box"/></svg></span><div><b>المخزون والمشتريات</b><span>مستودعات متعددة وجرد</span></div></a>
+          <a href="#modules"><span class="ico tint-purple"><svg><use href="#i-book"/></svg></span><div><b>الحسابات العامة</b><span>قيود، دليل حسابات، تقارير</span></div></a>
+          <a href="#modules"><span class="ico tint-rose"><svg><use href="#i-users"/></svg></span><div><b>الموارد البشرية</b><span>حضور، رواتب، عقود</span></div></a>
+          <a href="#modules"><span class="ico tint-sky"><svg><use href="#i-pos"/></svg></span><div><b>نقاط البيع POS</b><span>كاشير سريع يعمل بدون إنترنت</span></div></a>
+          <a href="#modules"><span class="ico tint-green"><svg><use href="#i-crm"/></svg></span><div><b>إدارة العملاء CRM</b><span>متابعة الفرص والعملاء</span></div></a>
+          <a href="#modules"><span class="ico tint-blue"><svg><use href="#i-factory"/></svg></span><div><b>العمليات والتصنيع</b><span>أوامر تشغيل ومراحل إنتاج</span></div></a>
+          <a href="#modules"><span class="ico tint-orange"><svg><use href="#i-store"/></svg></span><div><b>المتجر الإلكتروني</b><span>متجر مرتبط بمخزونك</span></div></a>
+          <div class="mega-foot"><span>كل التطبيقات مضمّنة في كل الباقات</span><a href="#modules">عرض كل التطبيقات ←</a></div>
+        </div>
+      </li>
+      <li><a href="#industries">القطاعات</a></li>
+      <li><a href="#pricing">الأسعار</a></li>
+      <li><a href="#features">المميزات</a></li>
+      <li><a href="#faq">المساعدة</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#" class="btn btn-ghost">تسجيل الدخول</a>
+      <a href="#pricing" class="btn btn-primary">ابدأ مجانًا</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text reveal">
+      <span class="pill"><i>جديد</i> الفاتورة الإلكترونية معتمدة من مصلحة الضرائب</span>
+      <h1>نظام ERP متكامل<br />لإدارة <mark>كافة أعمالك</mark></h1>
+      <p class="lead">أصدر فواتيرك الإلكترونية، وتابع مبيعاتك ومخزونك وحساباتك وموظفيك من مكان واحد. نظام سحابي عربي مصمم لأكثر من 50 نشاطًا تجاريًا.</p>
+      <div class="hero-cta">
+        <a href="#pricing" class="btn btn-primary btn-lg">ابدأ تجربتك المجانية</a>
+        <a href="#features" class="btn btn-outline btn-lg"><svg><use href="#i-play"/></svg> شاهد كيف يعمل</a>
+      </div>
+      <div class="hero-note">
+        <span><svg><use href="#i-check-circle"/></svg> 14 يومًا مجانًا</span>
+        <span><svg><use href="#i-check-circle"/></svg> بدون بطاقة ائتمان</span>
+        <span><svg><use href="#i-check-circle"/></svg> دعم فني مجاني</span>
+      </div>
+    </div>
+
+    <div class="mock reveal" aria-hidden="true">
+      <div class="dash">
+        <aside class="dash-side">
+          <div class="brand"><i></i> نظم</div>
+          <div class="item active"><i></i> لوحة التحكم</div>
+          <div class="item"><i></i> المبيعات</div>
+          <div class="item"><i></i> الفواتير</div>
+          <div class="item"><i></i> المخزون</div>
+          <div class="item"><i></i> الحسابات</div>
+          <div class="item"><i></i> الموظفون</div>
+          <div class="item"><i></i> التقارير</div>
+        </aside>
+        <div class="dash-main">
+          <div class="dash-top"><b>نظرة عامة — سبتمبر 2026</b><span class="btnx">+ فاتورة جديدة</span></div>
+          <div class="kpis">
+            <div class="kpi"><small>إجمالي المبيعات</small><b>842,500 ج.م</b><em>▲ 18%</em></div>
+            <div class="kpi"><small>الفواتير المحصّلة</small><b>1,284</b><em>▲ 9%</em></div>
+            <div class="kpi"><small>مصروفات الشهر</small><b>213,900 ج.م</b><em class="down">▼ 4%</em></div>
+          </div>
+          <div class="chart">
+            <div class="bars"><i style="height:45%"></i><i style="height:60%"></i><i style="height:38%"></i><i style="height:72%"></i><i style="height:55%"></i><i style="height:88%"></i><i style="height:66%"></i><i style="height:95%"></i></div>
+            <div class="donut"></div>
+          </div>
+          <div class="rows">
+            <div><span>العميل</span><span>الفاتورة</span><span>المبلغ</span><span>الحالة</span></div>
+            <div><span>شركة النور للتجارة</span><span>#INV-1042</span><span>12,400</span><span class="ok">مدفوعة</span></div>
+            <div><span>مطعم البركة</span><span>#INV-1041</span><span>3,150</span><span class="pend">معلّقة</span></div>
+            <div><span>صيدلية الشفاء</span><span>#INV-1040</span><span>8,900</span><span class="ok">مدفوعة</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="float float-inv">
+        <span class="tag">فاتورة إلكترونية</span>
+        <b>#INV-1043</b><span>تم الإرسال لمصلحة الضرائب</span>
+        <div class="amt">24,750 ج.م</div>
+      </div>
+      <div class="float float-notif">
+        <span class="ic"><svg><use href="#i-bell"/></svg></span>
+        <div><b>تنبيه مخزون</b><span>منتج "زيت 1 لتر" اقترب من الحد الأدنى</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Logos -->
+<section class="logos">
+  <div class="container">
+    <p>يثق بنا أكثر من 12,000 شركة في مصر والوطن العربي</p>
+    <div class="logo-track">
+      <span><i></i>النور جروب</span><span><i></i>مطاعم البركة</span><span><i></i>صيدليات الشفاء</span><span><i></i>الدلتا للمقاولات</span><span><i></i>أكاديمية المستقبل</span><span><i></i>ماركت بلس</span>
+    </div>
+  </div>
+</section>
+
+<!-- Modules -->
+<section class="section" id="modules">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">تطبيقات النظام</span>
+      <h2>كل ما تحتاجه شركتك في نظام واحد</h2>
+      <p>تعمل تطبيقات نظم بشكل مستقل أو متكامل مع بعضها. فعّل ما تحتاجه فقط، واضبط الإعدادات حسب نشاطك.</p>
+    </div>
+    <div class="grid-3">
+      <article class="card reveal"><span class="ico tint-green"><svg><use href="#i-invoice"/></svg></span><h3>المبيعات والفواتير</h3><p>عروض أسعار، فواتير، مرتجعات، ومتابعة التحصيل مع تذكيرات تلقائية للعملاء.</p><a href="#" class="more">اعرف المزيد <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="card reveal"><span class="ico tint-blue"><svg><use href="#i-shield"/></svg></span><h3>الفاتورة الإلكترونية</h3><p>ربط معتمد مع منظومة الفاتورة والإيصال الإلكتروني في مصلحة الضرائب المصرية وهيئة الزكاة السعودية.</p><a href="#" class="more">اعرف المزيد <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="card reveal"><span class="ico tint-orange"><svg><use href="#i-box"/></svg></span><h3>المخزون والمشتريات</h3><p>مستودعات متعددة، تحويلات، جرد، باركود، وأوامر شراء مرتبطة بالموردين.</p><a href="#" class="more">اعرف المزيد <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="card reveal"><span class="ico tint-purple"><svg><use href="#i-book"/></svg></span><h3>الحسابات العامة</h3><p>دليل حسابات كامل، قيود يومية تلقائية، مراكز تكلفة، أصول وإهلاك، وميزانية عمومية.</p><a href="#" class="more">اعرف المزيد <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="card reveal"><span class="ico tint-rose"><svg><use href="#i-users"/></svg></span><h3>الموارد البشرية والرواتب</h3><p>ملفات الموظفين، الحضور والانصراف، الورديات، الإجازات، ومسيّرات الرواتب في ضغطة.</p><a href="#" class="more">اعرف المزيد <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="card reveal"><span class="ico tint-sky"><svg><use href="#i-pos"/></svg></span><h3>نقاط البيع POS</h3><p>شاشة كاشير سريعة تدعم اللمس والباركود ودرج النقود، وتعمل حتى مع انقطاع الإنترنت.</p><a href="#" class="more">اعرف المزيد <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="card reveal"><span class="ico tint-green"><svg><use href="#i-crm"/></svg></span><h3>إدارة العملاء CRM</h3><p>متابعة العملاء المحتملين، المواعيد، المهام، ورسائل SMS وواتساب من داخل النظام.</p><a href="#" class="more">اعرف المزيد <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="card reveal"><span class="ico tint-blue"><svg><use href="#i-factory"/></svg></span><h3>العمليات والتصنيع</h3><p>أوامر تشغيل، قوائم مواد BOM، مراحل إنتاج، وتكلفة فعلية لكل منتج.</p><a href="#" class="more">اعرف المزيد <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="card reveal"><span class="ico tint-orange"><svg><use href="#i-store"/></svg></span><h3>المتجر الإلكتروني</h3><p>متجر جاهز مرتبط بمخزونك وفواتيرك، مع بوابات دفع وشحن محلية.</p><a href="#" class="more">اعرف المزيد <svg><use href="#i-arrow"/></svg></a></article>
+    </div>
+  </div>
+</section>
+
+<!-- Industries -->
+<section class="section alt" id="industries">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">القطاعات</span>
+      <h2>حلول مخصصة لأكثر من 50 نشاطًا تجاريًا</h2>
+      <p>اختر نشاطك ليتم ضبط النظام تلقائيًا بالشاشات والتقارير التي تحتاجها.</p>
+    </div>
+    <div class="chips" id="chips">
+      <button class="chip active" data-ind="retail"><svg><use href="#i-store"/></svg> تجارة التجزئة</button>
+      <button class="chip" data-ind="restaurant"><svg><use href="#i-pos"/></svg> المطاعم والكافيهات</button>
+      <button class="chip" data-ind="pharmacy"><svg><use href="#i-box"/></svg> الصيدليات</button>
+      <button class="chip" data-ind="clinic"><svg><use href="#i-calendar"/></svg> العيادات</button>
+      <button class="chip" data-ind="contracting"><svg><use href="#i-factory"/></svg> المقاولات</button>
+      <button class="chip" data-ind="education"><svg><use href="#i-book"/></svg> التعليم</button>
+      <button class="chip" data-ind="manufacturing"><svg><use href="#i-factory"/></svg> التصنيع</button>
+    </div>
+
+    <div class="ind-panel active" data-panel="retail">
+      <div>
+        <h3>برنامج حسابات ومخازن لمحلات التجزئة</h3>
+        <p>كاشير سريع، باركود، فروع متعددة، وتقارير ربحية لكل منتج وفرع.</p>
+        <ul class="checks">
+          <li><svg><use href="#i-check-circle"/></svg> نقاط بيع تعمل بدون إنترنت مع مزامنة تلقائية</li>
+          <li><svg><use href="#i-check-circle"/></svg> إدارة الفروع والمستودعات من حساب واحد</li>
+          <li><svg><use href="#i-check-circle"/></svg> برامج ولاء ونقاط للعملاء</li>
+          <li><svg><use href="#i-check-circle"/></svg> إيصال إلكتروني معتمد لكل عملية بيع</li>
+        </ul>
+        <a href="#pricing" class="btn btn-primary">جرّب حل التجزئة مجانًا</a>
+      </div>
+      <div class="ind-visual">
+        <div class="row"><b>فرع المعادي</b><span>مبيعات اليوم: 42,300 ج.م</span><span class="pill p-ok">نشط</span></div>
+        <div class="row"><b>فرع مدينة نصر</b><span>مبيعات اليوم: 31,120 ج.م</span><span class="pill p-ok">نشط</span></div>
+        <div class="row"><b>فرع الإسكندرية</b><span>مبيعات اليوم: 18,760 ج.م</span><span class="pill p-warn">جرد جارٍ</span></div>
+        <div class="row"><b>المستودع الرئيسي</b><span>1,940 صنف</span><span class="pill p-info">12 تنبيه</span></div>
+      </div>
+    </div>
+    <div class="ind-panel" data-panel="restaurant">
+      <div>
+        <h3>نظام إدارة المطاعم والكافيهات</h3>
+        <p>طاولات، طلبات، مطبخ، توصيل، وتكلفة وصفات دقيقة.</p>
+        <ul class="checks">
+          <li><svg><use href="#i-check-circle"/></svg> شاشة طلبات للمطبخ (KDS) وتقسيم الطاولات</li>
+          <li><svg><use href="#i-check-circle"/></svg> وصفات ومكونات مع خصم تلقائي من المخزون</li>
+          <li><svg><use href="#i-check-circle"/></svg> ربط مع تطبيقات التوصيل</li>
+          <li><svg><use href="#i-check-circle"/></svg> تقارير الأصناف الأكثر مبيعًا لكل وردية</li>
+        </ul>
+        <a href="#pricing" class="btn btn-primary">جرّب حل المطاعم مجانًا</a>
+      </div>
+      <div class="ind-visual">
+        <div class="row"><b>طاولة 4</b><span>3 أصناف — 420 ج.م</span><span class="pill p-warn">في المطبخ</span></div>
+        <div class="row"><b>طاولة 9</b><span>5 أصناف — 860 ج.م</span><span class="pill p-ok">تم التقديم</span></div>
+        <div class="row"><b>طلب توصيل #118</b><span>2 صنف — 195 ج.م</span><span class="pill p-info">في الطريق</span></div>
+        <div class="row"><b>الوردية المسائية</b><span>إجمالي: 12,480 ج.م</span><span class="pill p-ok">مفتوحة</span></div>
+      </div>
+    </div>
+    <div class="ind-panel" data-panel="pharmacy">
+      <div>
+        <h3>برنامج إدارة الصيدليات</h3>
+        <p>تواريخ صلاحية، بدائل، تأمين، وربط مباشر مع الإيصال الإلكتروني.</p>
+        <ul class="checks">
+          <li><svg><use href="#i-check-circle"/></svg> تنبيهات صلاحية وحد أدنى لكل صنف</li>
+          <li><svg><use href="#i-check-circle"/></svg> بحث بالمادة الفعالة والبدائل</li>
+          <li><svg><use href="#i-check-circle"/></svg> فواتير شركات التأمين وتحصيلها</li>
+          <li><svg><use href="#i-check-circle"/></svg> مرتجعات ومناقلات بين الفروع</li>
+        </ul>
+        <a href="#pricing" class="btn btn-primary">جرّب حل الصيدليات مجانًا</a>
+      </div>
+      <div class="ind-visual">
+        <div class="row"><b>Panadol Extra</b><span>240 علبة</span><span class="pill p-ok">صالح</span></div>
+        <div class="row"><b>Augmentin 1g</b><span>18 علبة</span><span class="pill p-warn">ينتهي خلال 30 يوم</span></div>
+        <div class="row"><b>Insulin Pen</b><span>6 وحدات</span><span class="pill p-info">أقل من الحد</span></div>
+        <div class="row"><b>مطالبات التأمين</b><span>14 مطالبة — 9,300 ج.م</span><span class="pill p-warn">قيد التحصيل</span></div>
+      </div>
+    </div>
+    <div class="ind-panel" data-panel="clinic">
+      <div>
+        <h3>نظام إدارة العيادات والمراكز الطبية</h3>
+        <p>مواعيد، ملفات مرضى، فواتير خدمات، وتذكيرات SMS تلقائية.</p>
+        <ul class="checks">
+          <li><svg><use href="#i-check-circle"/></svg> جدول مواعيد لكل طبيب وحجز أونلاين</li>
+          <li><svg><use href="#i-check-circle"/></svg> ملف طبي إلكتروني وسجل زيارات</li>
+          <li><svg><use href="#i-check-circle"/></svg> نسب الأطباء وتسويتها تلقائيًا</li>
+          <li><svg><use href="#i-check-circle"/></svg> فواتير معتمدة للخدمات الطبية</li>
+        </ul>
+        <a href="#pricing" class="btn btn-primary">جرّب حل العيادات مجانًا</a>
+      </div>
+      <div class="ind-visual">
+        <div class="row"><b>د. أحمد سمير</b><span>10:00 — كشف</span><span class="pill p-ok">تم</span></div>
+        <div class="row"><b>د. منى عادل</b><span>10:30 — متابعة</span><span class="pill p-warn">في الانتظار</span></div>
+        <div class="row"><b>د. أحمد سمير</b><span>11:00 — كشف</span><span class="pill p-info">مؤكد</span></div>
+        <div class="row"><b>تحصيل اليوم</b><span>6,750 ج.م</span><span class="pill p-ok">18 فاتورة</span></div>
+      </div>
+    </div>
+    <div class="ind-panel" data-panel="contracting">
+      <div>
+        <h3>برنامج حسابات المقاولات</h3>
+        <p>مشاريع، مستخلصات، مراكز تكلفة، وعهد المشرفين في نظام واحد.</p>
+        <ul class="checks">
+          <li><svg><use href="#i-check-circle"/></svg> تكلفة فعلية لكل مشروع وبند</li>
+          <li><svg><use href="#i-check-circle"/></svg> مستخلصات جارية وختامية مع الاستقطاعات</li>
+          <li><svg><use href="#i-check-circle"/></svg> عهد ومصروفات المواقع</li>
+          <li><svg><use href="#i-check-circle"/></svg> مقاولو الباطن ودفعاتهم</li>
+        </ul>
+        <a href="#pricing" class="btn btn-primary">جرّب حل المقاولات مجانًا</a>
+      </div>
+      <div class="ind-visual">
+        <div class="row"><b>مشروع برج النيل</b><span>تنفيذ 62%</span><span class="pill p-ok">في الموعد</span></div>
+        <div class="row"><b>مستخلص #7</b><span>1,240,000 ج.م</span><span class="pill p-warn">بانتظار الاعتماد</span></div>
+        <div class="row"><b>عهدة م. خالد</b><span>38,500 ج.م</span><span class="pill p-info">تسوية جزئية</span></div>
+        <div class="row"><b>مقاول الكهرباء</b><span>دفعة 3 من 5</span><span class="pill p-ok">مدفوعة</span></div>
+      </div>
+    </div>
+    <div class="ind-panel" data-panel="education">
+      <div>
+        <h3>نظام إدارة المدارس والمراكز التعليمية</h3>
+        <p>طلاب، مصروفات، أقساط، حضور، وتواصل مع أولياء الأمور.</p>
+        <ul class="checks">
+          <li><svg><use href="#i-check-circle"/></svg> ملفات الطلاب والفصول والمراحل</li>
+          <li><svg><use href="#i-check-circle"/></svg> أقساط وخصومات وتذكيرات سداد</li>
+          <li><svg><use href="#i-check-circle"/></svg> حضور الطلاب والمعلمين</li>
+          <li><svg><use href="#i-check-circle"/></svg> تقارير مالية لكل مرحلة</li>
+        </ul>
+        <a href="#pricing" class="btn btn-primary">جرّب حل التعليم مجانًا</a>
+      </div>
+      <div class="ind-visual">
+        <div class="row"><b>الصف الرابع — أ</b><span>32 طالب</span><span class="pill p-ok">حضور 96%</span></div>
+        <div class="row"><b>أقساط الترم الأول</b><span>محصّل 78%</span><span class="pill p-warn">42 متأخر</span></div>
+        <div class="row"><b>المعلمون</b><span>58 معلم</span><span class="pill p-info">3 إجازات</span></div>
+        <div class="row"><b>رسائل الأهالي</b><span>1,120 رسالة هذا الشهر</span><span class="pill p-ok">مرسلة</span></div>
+      </div>
+    </div>
+    <div class="ind-panel" data-panel="manufacturing">
+      <div>
+        <h3>نظام إدارة المصانع والتصنيع</h3>
+        <p>أوامر تشغيل، قوائم مواد، مراحل إنتاج، وتكلفة فعلية لكل وحدة.</p>
+        <ul class="checks">
+          <li><svg><use href="#i-check-circle"/></svg> قوائم مواد متعددة المستويات (BOM)</li>
+          <li><svg><use href="#i-check-circle"/></svg> خصم الخامات وإضافة المنتج التام تلقائيًا</li>
+          <li><svg><use href="#i-check-circle"/></svg> هالك ومراحل إنتاج ومراكز تكلفة</li>
+          <li><svg><use href="#i-check-circle"/></svg> تخطيط الاحتياج من الخامات</li>
+        </ul>
+        <a href="#pricing" class="btn btn-primary">جرّب حل التصنيع مجانًا</a>
+      </div>
+      <div class="ind-visual">
+        <div class="row"><b>أمر تشغيل #240</b><span>5,000 وحدة</span><span class="pill p-warn">مرحلة التعبئة</span></div>
+        <div class="row"><b>خامة: بولي إيثيلين</b><span>3.2 طن متاح</span><span class="pill p-ok">كافٍ</span></div>
+        <div class="row"><b>خامة: أحبار</b><span>40 كجم</span><span class="pill p-info">اطلب شراء</span></div>
+        <div class="row"><b>تكلفة الوحدة</b><span>14.20 ج.م</span><span class="pill p-ok">▼ 3%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Zigzag features -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">لماذا نظم؟</span>
+      <h2>مصمم ليفهم طبيعة عملك</h2>
+    </div>
+
+    <div class="feature-row reveal">
+      <div class="f-text">
+        <h2>فاتورة إلكترونية معتمدة في ثوانٍ</h2>
+        <p>أصدر فواتيرك وإيصالاتك الإلكترونية وأرسلها لمصلحة الضرائب مباشرة من النظام دون أي خطوات يدوية، مع توقيع إلكتروني وأكواد GS1/EGS جاهزة.</p>
+        <ul class="checks">
+          <li><svg><use href="#i-check-circle"/></svg> ربط معتمد رسميًا مع منظومة الفاتورة والإيصال الإلكتروني</li>
+          <li><svg><use href="#i-check-circle"/></svg> إرسال تلقائي أو جماعي ومتابعة حالة كل فاتورة</li>
+          <li><svg><use href="#i-check-circle"/></svg> إشعارات دائن ومدين ومرتجعات معتمدة</li>
+        </ul>
+        <a href="#pricing" class="btn btn-primary">فعّل الفاتورة الإلكترونية</a>
+      </div>
+      <div class="f-visual">
+        <div class="frame inv">
+          <div class="inv-head"><div><b>فاتورة ضريبية #INV-1043</b><br /><span style="color:var(--muted)">شركة النور للتجارة — 18 سبتمبر 2026</span></div><span class="stamp">مقبولة ✓</span></div>
+          <table>
+            <thead><tr><th>الصنف</th><th>الكمية</th><th>السعر</th><th>الإجمالي</th></tr></thead>
+            <tbody>
+              <tr><td>طابعة باركود</td><td>2</td><td>4,500</td><td>9,000</td></tr>
+              <tr><td>قارئ باركود لاسلكي</td><td>5</td><td>1,200</td><td>6,000</td></tr>
+              <tr><td>درج نقود معدني</td><td>3</td><td>2,250</td><td>6,750</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="3">الإجمالي شامل الضريبة 14%</td><td>24,795 ج.م</td></tr></tfoot>
+          </table>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px"><span style="font-size:11px;color:var(--muted)">UUID: 7F3A-92C1-…-E4B0</span><div class="qr"></div></div>
+        </div>
+        <div class="f-badge"><span class="dot"></span> متصل بمصلحة الضرائب</div>
+      </div>
+    </div>
+
+    <div class="feature-row rev reveal">
+      <div class="f-text">
+        <h2>تقارير لحظية تُريك أرباحك بوضوح</h2>
+        <p>أكثر من 100 تقرير جاهز: مبيعات، أرباح، مخزون، ضرائب، أعمار ديون، وميزانية عمومية. صدّرها Excel أو PDF بضغطة.</p>
+        <ul class="checks">
+          <li><svg><use href="#i-check-circle"/></svg> لوحة تحكم تفاعلية بمؤشرات الأداء</li>
+          <li><svg><use href="#i-check-circle"/></svg> فلاتر بالفرع والفترة والموظف والمنتج</li>
+          <li><svg><use href="#i-check-circle"/></svg> إقرار ضريبة القيمة المضافة جاهز</li>
+        </ul>
+        <a href="#pricing" class="btn btn-outline">استكشف التقارير</a>
+      </div>
+      <div class="f-visual">
+        <div class="frame">
+          <div class="report-grid">
+            <div class="tile"><small>صافي الربح</small><b>128,400 ج.م</b><small style="color:var(--primary-600)">▲ 22% عن الشهر الماضي</small></div>
+            <div class="tile"><small>مديونيات العملاء</small><b>64,200 ج.م</b><small style="color:var(--rose)">8 فواتير متأخرة</small></div>
+            <div class="line-chart">
+              <svg viewBox="0 0 400 120" preserveAspectRatio="none">
+                <defs><linearGradient id="lg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#00A67E" stop-opacity=".35"/><stop offset="1" stop-color="#00A67E" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0 90 L50 80 L100 84 L150 60 L200 66 L250 40 L300 48 L350 22 L400 30 L400 120 L0 120Z" fill="url(#lg)"/>
+                <path d="M0 90 L50 80 L100 84 L150 60 L200 66 L250 40 L300 48 L350 22 L400 30" fill="none" stroke="#00A67E" stroke-width="3" stroke-linecap="round"/>
+                <path d="M0 100 L50 96 L100 98 L150 88 L200 92 L250 80 L300 86 L350 70 L400 76" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-dasharray="6 5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-row reveal">
+      <div class="f-text">
+        <h2>أدر أعمالك من هاتفك في أي وقت</h2>
+        <p>تطبيق نظم على iOS وAndroid: أصدر فاتورة من عند العميل، تابع مبيعات الفروع، واعتمد الطلبات والإجازات وأنت خارج المكتب.</p>
+        <ul class="checks">
+          <li><svg><use href="#i-check-circle"/></svg> إشعارات فورية للمبيعات والتحصيل والمخزون</li>
+          <li><svg><use href="#i-check-circle"/></svg> يعمل بدون إنترنت ويزامن تلقائيًا</li>
+          <li><svg><use href="#i-check-circle"/></svg> صلاحيات دقيقة لكل مستخدم</li>
+        </ul>
+        <div class="store" style="margin-top:0">
+          <a href="#" style="border-color:var(--line);color:var(--navy)"><svg><use href="#i-apple"/></svg><span><small>حمّله من</small><b>App Store</b></span></a>
+          <a href="#" style="border-color:var(--line);color:var(--navy)"><svg><use href="#i-android"/></svg><span><small>متاح على</small><b>Google Play</b></span></a>
+        </div>
+      </div>
+      <div class="f-visual">
+        <div class="phones">
+          <div class="phone">
+            <div class="screen">
+              <div class="bar w60"></div>
+              <div class="tile"><small>مبيعات اليوم</small><b>42,300 ج.م</b></div>
+              <div class="tile"><div class="mini-bars"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:65%"></i><i style="height:80%"></i></div></div>
+              <div class="tile"><small>آخر فاتورة</small><b>#INV-1043</b><small>24,795 ج.م — مقبولة</small></div>
+              <div class="bar w40"></div>
+            </div>
+          </div>
+          <div class="phone second">
+            <div class="screen">
+              <div class="bar w40"></div>
+              <div class="tile"><small>طلب إجازة</small><b>محمد علي</b><small>3 أيام — بانتظار الاعتماد</small></div>
+              <div class="tile"><small>تنبيه مخزون</small><b>4 أصناف</b><small>أقل من الحد الأدنى</small></div>
+              <div class="bar w60"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+  <div class="container stats-grid">
+    <div class="stat reveal"><b><span>+</span><span class="count" data-to="12000">0</span></b><p>شركة تستخدم نظم يوميًا</p></div>
+    <div class="stat reveal"><b><span>+</span><span class="count" data-to="50">0</span></b><p>قطاعًا ونشاطًا تجاريًا</p></div>
+    <div class="stat reveal"><b><span>+</span><span class="count" data-to="8">0</span></b><p>دول عربية نخدمها</p></div>
+    <div class="stat reveal"><b><span class="count" data-to="99">0</span><span>.9%</span></b><p>نسبة توافر الخدمة</p></div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section" id="testimonials">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">آراء العملاء</span>
+      <h2>ماذا يقول عملاؤنا عن نظم؟</h2>
+    </div>
+    <div class="slider">
+      <div class="slides" id="slides">
+        <div class="tcard">
+          <div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+          <p>"كنا نستخدم 3 برامج مختلفة للمبيعات والمخزون والحسابات. مع نظم أصبح كل شيء في شاشة واحدة، ووفرنا وقت المحاسب بنسبة كبيرة."</p>
+          <div class="who"><span class="avatar" style="background:var(--primary)">م</span><div><b>محمد الشريف</b><span>مدير عام — النور جروب</span></div></div>
+        </div>
+        <div class="tcard">
+          <div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+          <p>"الفاتورة الإلكترونية كانت كابوس. الآن ترسل تلقائيًا لمصلحة الضرائب ونتابع الحالة من الموبايل. الدعم الفني بيرد في دقائق."</p>
+          <div class="who"><span class="avatar" style="background:var(--blue)">س</span><div><b>سارة عبد الله</b><span>مديرة مالية — صيدليات الشفاء</span></div></div>
+        </div>
+        <div class="tcard">
+          <div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+          <p>"عندنا 6 فروع مطاعم، ونظم مكّنني أشوف مبيعات كل فرع لحظيًا وأعرف تكلفة كل طبق بدقة. أفضل قرار اتخذناه السنة دي."</p>
+          <div class="who"><span class="avatar" style="background:var(--accent)">ك</span><div><b>كريم حسان</b><span>شريك مؤسس — مطاعم البركة</span></div></div>
+        </div>
+        <div class="tcard">
+          <div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+          <p>"تقارير المستخلصات ومراكز التكلفة غيّرت طريقة متابعتنا للمشاريع. نعرف ربحية كل مشروع قبل ما ينتهي."</p>
+          <div class="who"><span class="avatar" style="background:var(--purple)">ه</span><div><b>هاني مصطفى</b><span>رئيس مجلس الإدارة — الدلتا للمقاولات</span></div></div>
+        </div>
+        <div class="tcard">
+          <div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+          <p>"أسهل برنامج جربناه للفريق غير المحاسبي. الموظفون تعلموه في يوم واحد، والتدريب المجاني كان ممتاز."</p>
+          <div class="who"><span class="avatar" style="background:var(--rose)">ن</span><div><b>نهى فؤاد</b><span>مديرة عمليات — أكاديمية المستقبل</span></div></div>
+        </div>
+        <div class="tcard">
+          <div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+          <p>"نقاط البيع تعمل حتى لما النت يقطع، ولما يرجع كل شيء يتزامن. ده كان شرط أساسي عندنا واشتغل بدون مشاكل."</p>
+          <div class="who"><span class="avatar" style="background:var(--sky)">ع</span><div><b>عمرو صلاح</b><span>مالك — ماركت بلس</span></div></div>
+        </div>
+      </div>
+      <div class="slider-nav">
+        <button id="prevSlide" aria-label="السابق"><svg><use href="#i-arrow-r"/></svg></button>
+        <div class="dots" id="dots"></div>
+        <button id="nextSlide" aria-label="التالي"><svg><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Compliance -->
+<section class="section alt" style="padding:56px 0">
+  <div class="container">
+    <div class="badges reveal">
+      <div class="badge"><span class="ico tint-green"><svg><use href="#i-shield"/></svg></span><div><b>معتمد من مصلحة الضرائب المصرية</b><span>منظومة الفاتورة والإيصال الإلكتروني</span></div></div>
+      <div class="badge"><span class="ico tint-blue"><svg><use href="#i-shield"/></svg></span><div><b>متوافق مع هيئة الزكاة والضريبة</b><span>الفوترة الإلكترونية — السعودية</span></div></div>
+      <div class="badge"><span class="ico tint-purple"><svg><use href="#i-globe"/></svg></span><div><b>استضافة سحابية آمنة</b><span>تشفير SSL ونسخ احتياطي يومي</span></div></div>
+      <div class="badge"><span class="ico tint-orange"><svg><use href="#i-headset"/></svg></span><div><b>دعم فني 7 أيام أسبوعيًا</b><span>هاتف، واتساب، بريد، وشات</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">الأسعار</span>
+      <h2>باقات مرنة تناسب حجم شركتك</h2>
+      <p>كل الباقات تشمل جميع التطبيقات والتحديثات والدعم الفني. جرّب 14 يومًا مجانًا بدون بطاقة ائتمان.</p>
+    </div>
+    <div class="center reveal">
+      <div class="toggle" id="billingToggle">
+        <button class="active" data-period="monthly">شهري</button>
+        <button data-period="yearly">سنوي <span class="save">وفّر 20%</span></button>
+      </div>
+    </div>
+    <div class="plans">
+      <div class="plan reveal">
+        <h3>الأساسية</h3>
+        <p class="desc">للمحلات والشركات الناشئة</p>
+        <div class="price"><b data-monthly="299" data-yearly="239">299</b><small>ج.م</small><span>/ شهريًا</span></div>
+        <p class="per">مستخدم واحد — فرع واحد</p>
+        <ul class="checks">
+          <li><svg><use href="#i-check-circle"/></svg> 300 فاتورة شهريًا</li>
+          <li><svg><use href="#i-check-circle"/></svg> الفاتورة الإلكترونية</li>
+          <li><svg><use href="#i-check-circle"/></svg> المبيعات والمخزون</li>
+          <li><svg><use href="#i-check-circle"/></svg> نقطة بيع واحدة</li>
+          <li><svg><use href="#i-check-circle"/></svg> تقارير أساسية</li>
+        </ul>
+        <a href="#" class="btn btn-outline">ابدأ مجانًا</a>
+      </div>
+      <div class="plan featured reveal">
+        <span class="ribbon">الأكثر طلبًا</span>
+        <h3>المتقدمة</h3>
+        <p class="desc">للشركات النامية متعددة الفروع</p>
+        <div class="price"><b data-monthly="699" data-yearly="559">699</b><small>ج.م</small><span>/ شهريًا</span></div>
+        <p class="per">5 مستخدمين — 3 فروع</p>
+        <ul class="checks">
+          <li><svg><use href="#i-check-circle"/></svg> فواتير غير محدودة</li>
+          <li><svg><use href="#i-check-circle"/></svg> كل تطبيقات الباقة الأساسية</li>
+          <li><svg><use href="#i-check-circle"/></svg> الحسابات العامة ومراكز التكلفة</li>
+          <li><svg><use href="#i-check-circle"/></svg> الموارد البشرية والرواتب</li>
+          <li><svg><use href="#i-check-circle"/></svg> إدارة العملاء CRM</li>
+          <li><svg><use href="#i-check-circle"/></svg> تقارير متقدمة وتصدير</li>
+        </ul>
+        <a href="#" class="btn btn-primary">ابدأ مجانًا</a>
+      </div>
+      <div class="plan reveal">
+        <h3>المؤسسات</h3>
+        <p class="desc">للشركات الكبيرة والمصانع</p>
+        <div class="price"><b data-monthly="1499" data-yearly="1199">1499</b><small>ج.م</small><span>/ شهريًا</span></div>
+        <p class="per">مستخدمون وفروع غير محدودة</p>
+        <ul class="checks">
+          <li><svg><use href="#i-check-circle"/></svg> كل تطبيقات الباقة المتقدمة</li>
+          <li><svg><use href="#i-check-circle"/></svg> العمليات والتصنيع</li>
+          <li><svg><use href="#i-check-circle"/></svg> المتجر الإلكتروني</li>
+          <li><svg><use href="#i-check-circle"/></svg> API وربط مع أنظمة خارجية</li>
+          <li><svg><use href="#i-check-circle"/></svg> مدير حساب مخصص</li>
+        </ul>
+        <a href="#" class="btn btn-outline">تواصل مع المبيعات</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section alt" id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">الأسئلة الشائعة</span>
+      <h2>كل ما تريد معرفته قبل البدء</h2>
+    </div>
+    <div class="faq" id="faqList">
+      <div class="faq-item open">
+        <button type="button">هل البرنامج مجاني؟ <span class="plus"><svg><use href="#i-plus"/></svg></span></button>
+        <div class="ans">يمكنك تجربة كل مميزات النظام مجانًا لمدة 14 يومًا دون إدخال بطاقة ائتمان. بعدها تختار الباقة المناسبة، ويمكنك الإلغاء في أي وقت.</div>
+      </div>
+      <div class="faq-item">
+        <button type="button">هل يحتاج البرنامج إلى تثبيت أو سيرفر؟ <span class="plus"><svg><use href="#i-plus"/></svg></span></button>
+        <div class="ans">لا. نظم نظام سحابي يعمل من المتصفح أو تطبيق الموبايل، وبياناتك محفوظة بنسخ احتياطي يومي ومشفّرة بالكامل.</div>
+      </div>
+      <div class="faq-item">
+        <button type="button">هل الفاتورة الإلكترونية معتمدة رسميًا؟ <span class="plus"><svg><use href="#i-plus"/></svg></span></button>
+        <div class="ans">نعم، النظام مرتبط مباشرة بمنظومة الفاتورة والإيصال الإلكتروني في مصلحة الضرائب المصرية، ومتوافق مع متطلبات هيئة الزكاة والضريبة والجمارك في السعودية.</div>
+      </div>
+      <div class="faq-item">
+        <button type="button">هل يمكن نقل بياناتي من برنامج آخر أو من Excel؟ <span class="plus"><svg><use href="#i-plus"/></svg></span></button>
+        <div class="ans">بالتأكيد. يمكنك استيراد العملاء والموردين والأصناف والأرصدة الافتتاحية من ملفات Excel، وفريقنا يساعدك في الترحيل مجانًا.</div>
+      </div>
+      <div class="faq-item">
+        <button type="button">هل يوجد تدريب ودعم فني؟ <span class="plus"><svg><use href="#i-plus"/></svg></span></button>
+        <div class="ans">نعم، جميع الباقات تشمل تدريبًا مجانيًا عبر الإنترنت ودعمًا فنيًا 7 أيام أسبوعيًا عبر الهاتف والواتساب والبريد.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container cta-inner">
+    <div>
+      <h2>ابدأ إدارة أعمالك بذكاء اليوم</h2>
+      <p>انضم لآلاف الشركات التي تدير مبيعاتها وحساباتها مع نظم. التجربة مجانية بالكامل.</p>
+    </div>
+    <div class="btns">
+      <a href="#pricing" class="btn btn-white btn-lg">ابدأ تجربتك المجانية</a>
+      <a href="#" class="btn btn-outline btn-lg">اطلب عرضًا توضيحيًا</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="about">
+        <a href="#" class="logo"><span class="logo-mark"><svg><use href="#i-logo"/></svg></span><span>نظم<small>NOZOM ERP</small></span></a>
+        <p>نظام ERP سحابي عربي لإدارة المبيعات والفواتير الإلكترونية والمخزون والحسابات والموارد البشرية، مصمم لأكثر من 50 نشاطًا تجاريًا.</p>
+        <div class="social">
+          <a href="#" aria-label="فيسبوك"><svg><use href="#i-fb"/></svg></a>
+          <a href="#" aria-label="إكس"><svg><use href="#i-x"/></svg></a>
+          <a href="#" aria-label="لينكدإن"><svg><use href="#i-in"/></svg></a>
+          <a href="#" aria-label="يوتيوب"><svg><use href="#i-yt"/></svg></a>
+        </div>
+        <div class="store">
+          <a href="#"><svg><use href="#i-apple"/></svg><span><small>حمّله من</small><b>App Store</b></span></a>
+          <a href="#"><svg><use href="#i-android"/></svg><span><small>متاح على</small><b>Google Play</b></span></a>
+        </div>
+      </div>
+      <div>
+        <h4>المنتجات</h4>
+        <ul><li><a href="#modules">المبيعات والفواتير</a></li><li><a href="#modules">الفاتورة الإلكترونية</a></li><li><a href="#modules">المخزون والمشتريات</a></li><li><a href="#modules">الحسابات العامة</a></li><li><a href="#modules">الموارد البشرية</a></li><li><a href="#modules">نقاط البيع</a></li></ul>
+      </div>
+      <div>
+        <h4>القطاعات</h4>
+        <ul><li><a href="#industries">تجارة التجزئة</a></li><li><a href="#industries">المطاعم</a></li><li><a href="#industries">الصيدليات</a></li><li><a href="#industries">العيادات</a></li><li><a href="#industries">المقاولات</a></li><li><a href="#industries">التصنيع</a></li></ul>
+      </div>
+      <div>
+        <h4>الشركة</h4>
+        <ul><li><a href="#">من نحن</a></li><li><a href="#pricing">الأسعار</a></li><li><a href="#">الشركاء والوكلاء</a></li><li><a href="#">الوظائف</a></li><li><a href="#">المدونة</a></li><li><a href="#">تواصل معنا</a></li></ul>
+      </div>
+      <div>
+        <h4>الدعم</h4>
+        <ul><li><a href="#faq">الأسئلة الشائعة</a></li><li><a href="#">مركز المساعدة</a></li><li><a href="#">شروحات الفيديو</a></li><li><a href="#">توثيق API</a></li><li><a href="#">سياسة الخصوصية</a></li><li><a href="#">شروط الاستخدام</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 نظم لتكنولوجيا المعلومات. جميع الحقوق محفوظة — nozomeg.com</span>
+      <div class="pay"><span>VISA</span><span>MC</span><span>Fawry</span><span>Vodafone Cash</span></div>
+      <a href="#">English</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/20000000000" class="wa" aria-label="تواصل عبر واتساب" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg></a>
+
+<script src="js/main.js"></script>
+</body>
+</html>
