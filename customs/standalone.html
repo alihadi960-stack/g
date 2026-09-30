@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>شيك المطالبة الجمركية</title>
+  <style>
+:root{--bg:#0b0f14;--card:#0f1620;--muted:#9aa4b2;--text:#e6edf3;--accent:#27c39f;--danger:#ff5d5d;--line:#1f2a37;}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Kufi Arabic", "Noto Sans Arabic", sans-serif;
+  background: radial-gradient(1200px 600px at 90% -10%, rgba(39,195,159,.25), transparent 55%),
+              radial-gradient(900px 500px at -10% 10%, rgba(59,130,246,.18), transparent 55%),
+              var(--bg);
+  color:var(--text);
+}
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 16px;border-bottom:1px solid var(--line);
+  position:sticky;top:0;background:rgba(11,15,20,.85);backdrop-filter: blur(10px);
+}
+.brand .title{font-weight:800;font-size:18px}
+.brand .sub{color:var(--muted);font-size:12px;margin-top:2px}
+.status{display:flex;align-items:center;gap:8px}
+.dot{width:10px;height:10px;border-radius:999px;background:var(--danger);display:inline-block}
+.dot.ok{background:var(--accent)}
+.actions{display:flex;gap:8px}
+.wrap{max-width:980px;margin:18px auto;padding:0 16px}
+.card{
+  background:rgba(15,22,32,.9);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.35);
+  margin-bottom:14px;
+}
+h2{margin:0 0 10px 0}
+label{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}
+input,button{
+  border-radius:12px;border:1px solid var(--line);
+  background:#0b1220;color:var(--text);
+  padding:10px 12px;font-size:14px;
+}
+input{width:100%}
+.btn{cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.primary{background:linear-gradient(135deg, rgba(39,195,159,.95), rgba(34,211,238,.7)); border:0; color:#041014; font-weight:800}
+.row{display:flex;gap:10px;align-items:center;margin-top:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.actions{flex-wrap:wrap;justify-content:flex-end}}
+.hint{color:var(--muted);font-size:12px;margin:0 0 10px 0}
+.msg{margin-top:10px;color:var(--muted);font-size:13px}
+.kpi{border:1px dashed #2a384a;border-radius:14px;padding:12px}
+.kpiLabel{color:var(--muted);font-size:12px}
+.kpiValue{font-size:16px;font-weight:800;margin-top:6px}
+.mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; word-break:break-all}
+.list{margin-top:12px;display:grid;gap:10px}
+.item{border:1px solid var(--line);border-radius:12px;padding:12px;background:#0b1220}
+.item .t{font-weight:800}
+.item .m{color:var(--muted);font-size:12px;margin-top:6px}
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.55);
+  display:flex;align-items:center;justify-content:center;
+  padding:16px;
+}
+.modal{
+  width:min(560px, 100%);
+  background:rgba(15,22,32,.98);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:14px;
+}
+.modalHead{display:flex;align-items:center;justify-content:space-between}
+.toast{
+  position:fixed;bottom:18px;left:18px;
+  background:#0b1220;border:1px solid var(--line);
+  padding:10px 12px;border-radius:12px;
+  box-shadow:0 10px 24px rgba(0,0,0,.35);
+}
+.toast.bad{border-color:#5b1f1f}
+
+</style>
+  <style>
+    .tblWrap{overflow-x:auto;margin-top:10px}
+    table{border-collapse:collapse;width:100%;font-size:13px}
+    th,td{border:1px solid var(--line);padding:6px;text-align:center;white-space:nowrap}
+    th{color:var(--muted);font-weight:600;background:#0b1220}
+    td input{padding:6px 8px;border-radius:8px;min-width:90px}
+    td.num{font-variant-numeric:tabular-nums}
+    .ok{color:var(--accent)} .warn{color:#f5b942} .bad{color:var(--danger)}
+    .drop{border:2px dashed #2a384a;border-radius:14px;padding:22px;text-align:center;cursor:pointer}
+    .drop.over{border-color:var(--accent)}
+    .files{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .chip{border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:12px;background:#0b1220}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    @media(max-width:720px){.grid3{grid-template-columns:1fr 1fr}}
+    .row.wrapRow{flex-wrap:wrap}
+    button:disabled{opacity:.5;cursor:not-allowed}
+    ul.warnings{margin:8px 0 0;padding-inline-start:18px;color:#f5b942;font-size:13px}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="title">شيك المطالبة الجمركية</div>
+      <div class="sub">صورة الشهادة ← بيانات ← شيت الإكسيل بنفس المعادلات</div>
+    </div>
+    <div class="actions">
+      <button class="btn" id="btnSettings">الإعدادات</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- 1) ملف الإكسيل -->
+    <section class="card">
+      <h2>1) ملف الإكسيل</h2>
+      <p class="hint">افتح ملف "شيك مطالبة" بتاعك عشان البيانات الجديدة تتضاف تحت الموجود، أو ابدأ ملف جديد.</p>
+      <div class="row wrapRow">
+        <input id="xlsxInput" type="file" accept=".xlsx" style="max-width:320px" />
+        <button class="btn" id="btnNewWb">ملف جديد</button>
+      </div>
+      <div id="wbStatus" class="msg">لم يتم اختيار ملف.</div>
+    </section>
+
+    <!-- 2) الصور -->
+    <section class="card">
+      <h2>2) صورة الشهادة والمطالبة</h2>
+      <p class="hint">ارفع صورة (أو PDF) شهادة الإفراج الجمركية — كل صفحاتها — ولو معاك إيصال المطالبة ارفعه معاها عشان يتملى عمود "قيمة المطالبة".</p>
+      <label class="drop" id="drop">
+        <input id="imgInput" type="file" accept="image/*,application/pdf" multiple hidden />
+        📷 اضغط هنا لاختيار/تصوير الملفات أو اسحبها هنا
+      </label>
+      <div id="fileList" class="files"></div>
+      <div class="row">
+        <button class="btn primary" id="btnExtract" disabled>استخراج البيانات</button>
+        <button class="btn" id="btnClear">مسح</button>
+      </div>
+      <div id="extractMsg" class="msg"></div>
+    </section>
+
+    <!-- 3) مراجعة -->
+    <section class="card" id="secReview" style="display:none">
+      <h2>3) راجع البيانات قبل الإضافة</h2>
+      <div class="grid3">
+        <div><label>رقم الشهادة (رقم الإفراج)</label><input id="fCert" /></div>
+        <div><label>العملة</label><input id="fCur" /></div>
+        <div><label>قيمة الفاتورة (بالعملة)</label><input id="fInv" inputmode="decimal" /></div>
+        <div><label>القيمة النهائية بالشهادة (ج.م)</label><input id="fFinal" inputmode="decimal" /></div>
+        <div><label>قيمة المطالبة (إجمالي الإيصال)</label><input id="fClaim" inputmode="decimal" /></div>
+        <div><label>سعر التحويل الفعلي = النهائية ÷ الفاتورة</label><input id="fRate" disabled /></div>
+      </div>
+
+      <div class="tblWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th><th>البند الجمركى</th><th>النسبة %</th><th>قيمة الفاتورة عملة</th>
+              <th>ضريبة الوارد</th><th>القيمة المضافة</th><th>أرباح تجارية</th><th>الإجمالي</th><th>مطابقة الشهادة</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="itemsBody"></tbody>
+          <tfoot id="itemsFoot"></tfoot>
+        </table>
+      </div>
+      <div class="row wrapRow">
+        <button class="btn" id="btnAddItem">+ بند</button>
+      </div>
+      <div id="checks" class="msg"></div>
+      <ul id="warnings" class="warnings"></ul>
+
+      <div class="row wrapRow">
+        <button class="btn primary" id="btnAppend">أضف للشيت</button>
+        <button class="btn" id="btnDownload" disabled>⬇ تحميل ملف الإكسيل</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Settings -->
+  <div id="ov" class="overlay" style="display:none">
+    <div class="modal">
+      <div class="modalHead">
+        <h3>الإعدادات</h3>
+        <button class="btn" id="btnCloseSettings">✖</button>
+      </div>
+      <label class="hint">Claude API key</label>
+      <input id="apiKeyInput" type="password" placeholder="sk-ant-..." autocomplete="off" />
+      <p class="hint" style="margin-top:8px">
+        المفتاح بيتحفظ على الجهاز ده بس (localStorage) وبيتبعت مباشرة لـ api.anthropic.com. متستخدمش الصفحة دي على جهاز مش بتاعك.
+      </p>
+      <div class="row">
+        <button class="btn primary" id="btnSaveSettings">حفظ</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" style="display:none"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script>
+  <script type="module">
+// كتابة بلوك شهادة جمركية في شيت "شيك مطالبة" بنفس معادلات الشيت الأصلي.
+// يشتغل مع ExcelJS في المتصفح وفي Node (مفيش import هنا، بياخد الـ worksheet جاهز).
+
+const SHEET_NAME = "شيك مطالبة";
+const VAT_RATE = 0.14;   // K = I * 14%
+const ATS_RATE = 0.01;   // L = D * F * 1% (أرباح تجارية / أ.ت.ص)
+
+const NUM_FMT = '_(* #,##0.00_);_(* \\(#,##0.00\\);_(* "-"??_);_(@_)';
+const PCT_FMT = "0%";
+const FONT = { name: "Aptos Narrow", size: 11 };
+const THIN = { style: "thin" };
+const BOX = { top: THIN, left: THIN, bottom: THIN, right: THIN };
+const HEADER_FILL = { type: "pattern", pattern: "solid", fgColor: { argb: "FFD9E1F2" } };
+
+const HEADERS = [
+  "رقم الشهادة ", "قيمه الفاتوره", "العملة", "سعر التحويل", "القيمة النهائية - بالشهادة",
+  "قيمة الفاتورة عملة ", "البند الجمركى ", "نسبة البند الجمركى ", "وعاء الضريبة",
+  "ضريبة الوارد ", "القيمة المضافة ", "ارباح تجارية ", "قيمة الشيك المحسوبة", "قيمة المطالبة",
+];
+const HEADER_ROW = 3;
+const WIDTHS = [9.6, 11.4, 6.3, 9.3, 18.6, 15.6, 11, 14.3, 14.3, 14.6, 14.6, 12.7, 17.1, 14.6, 11.3];
+
+function getOrCreateSheet(wb) {
+  let ws = wb.getWorksheet(SHEET_NAME) || wb.worksheets[0];
+  if (!ws) {
+    ws = wb.addWorksheet(SHEET_NAME, { views: [{ rightToLeft: true }] });
+  }
+  if (!String(ws.getCell(HEADER_ROW, 1).value || "").trim()) writeHeader(ws);
+  return ws;
+}
+
+function writeHeader(ws) {
+  WIDTHS.forEach((w, i) => { ws.getColumn(i + 1).width = w; });
+  const row = ws.getRow(HEADER_ROW);
+  HEADERS.forEach((h, i) => {
+    const c = row.getCell(i + 1);
+    c.value = h;
+    c.font = { ...FONT, bold: true };
+    c.fill = HEADER_FILL;
+    c.border = BOX;
+    c.alignment = { horizontal: "center", vertical: "middle", wrapText: true };
+  });
+  row.height = 32;
+}
+
+// آخر صف فيه أي قيمة في الأعمدة A..O
+function lastUsedRow(ws) {
+  let last = HEADER_ROW;
+  ws.eachRow({ includeEmpty: false }, (row, n) => {
+    for (let col = 1; col <= 15; col++) {
+      const v = row.getCell(col).value;
+      if (v !== null && v !== undefined && v !== "") { last = Math.max(last, n); break; }
+    }
+  });
+  return last;
+}
+
+function asNumberIfDigits(s) {
+  const t = String(s ?? "").replace(/\s/g, "");
+  return /^\d{1,15}$/.test(t) ? Number(t) : t;
+}
+
+// رقم الشهادة زي ما في الشيت: آخر جزء من رقم الإفراج (2026-614-1-453456 → 453456)
+function shortCertNumber(full) {
+  const m = String(full ?? "").match(/(\d+)\D*$/);
+  return m ? Number(m[1]) : full;
+}
+
+/**
+ * data = {
+ *   certificate_number, currency, invoice_value, final_value,
+ *   items: [{ hs_code, duty_rate_percent, invoice_value }],
+ *   claim_total   // قيمة المطالبة (اختياري)
+ * }
+ * بيرجع { startRow, totalRow }
+ */
+function appendClaimBlock(wb, data) {
+  const items = (data.items || []).filter(it => Number(it.invoice_value) > 0);
+  if (!items.length) throw new Error("مفيش بنود في الفاتورة");
+
+  const ws = getOrCreateSheet(wb);
+  const start = lastUsedRow(ws) + (lastUsedRow(ws) === HEADER_ROW ? 1 : 2);
+  const end = start + items.length - 1;
+  const total = end + 1;
+  const currency = data.currency || "دولار";
+
+  items.forEach((it, i) => {
+    const r = start + i;
+    const row = ws.getRow(r);
+    const set = (col, value, fmt, center) => {
+      const c = row.getCell(col);
+      c.value = value;
+      c.font = FONT;
+      c.border = BOX;
+      if (fmt) c.numFmt = fmt;
+      if (center) c.alignment = { horizontal: "center", vertical: "middle" };
+    };
+    if (i === 0) {
+      set(1, shortCertNumber(data.certificate_number), null, true);
+      set(2, Number(data.invoice_value), NUM_FMT, true);
+      set(4, { formula: `+E${start}/B${start}` }, NUM_FMT, true);
+      set(5, Number(data.final_value), NUM_FMT, true);
+    } else {
+      set(1, null, null, true);
+      set(2, null, NUM_FMT, true);
+      // نفس سعر التحويل الفعلي بتاع أول سطر بدل رقم ثابت
+      set(4, { formula: `+$D$${start}` }, NUM_FMT, true);
+      set(5, null, NUM_FMT, true);
+    }
+    set(3, currency, null, true);
+    set(6, Number(it.invoice_value), NUM_FMT);
+    set(7, asNumberIfDigits(it.hs_code), null, true);
+    set(8, Number(it.duty_rate_percent) / 100, PCT_FMT, true);
+    set(9, { formula: `+(D${r}*F${r})+J${r}` }, NUM_FMT);
+    set(10, { formula: `+F${r}*D${r}*H${r}` }, NUM_FMT);
+    set(11, { formula: `+I${r}*${VAT_RATE}` }, NUM_FMT);
+    set(12, { formula: `+D${r}*F${r}*${ATS_RATE}` }, NUM_FMT);
+    set(13, { formula: `+L${r}+K${r}+J${r}` }, NUM_FMT);
+    set(14, null, NUM_FMT);
+  });
+
+  if (items.length > 1) ws.mergeCells(start, 1, end, 1);
+
+  const tr = ws.getRow(total);
+  const bold = { ...FONT, size: 12, bold: true };
+  ["J", "K", "L", "M"].forEach((L, i) => {
+    const c = tr.getCell(10 + i);
+    c.value = { formula: `SUM(${L}${start}:${L}${end})` };
+    c.numFmt = NUM_FMT;
+    c.font = bold;
+  });
+  const n = tr.getCell(14);
+  n.value = data.claim_total != null && data.claim_total !== "" ? Number(data.claim_total) : null;
+  n.numFmt = NUM_FMT;
+  n.font = bold;
+  const o = tr.getCell(15);
+  o.value = { formula: `+M${total}-N${total}` };
+  o.numFmt = NUM_FMT;
+  o.font = FONT;
+
+  // Excel يعيد حساب كل المعادلات أول ما الملف يتفتح
+  wb.calcProperties = { ...(wb.calcProperties || {}), fullCalcOnLoad: true };
+  return { startRow: start, totalRow: total };
+}
+
+// نفس معادلات الشيت، للمعاينة قبل الإضافة
+function previewTotals(data) {
+  const rate = Number(data.final_value) / Number(data.invoice_value) || 0;
+  const rows = (data.items || []).map(it => {
+    const base = rate * Number(it.invoice_value || 0);
+    const duty = base * Number(it.duty_rate_percent || 0) / 100;
+    const vat = (base + duty) * VAT_RATE;
+    const ats = base * ATS_RATE;
+    return { duty, vat, ats, total: duty + vat + ats };
+  });
+  const sum = k => rows.reduce((s, r) => s + r[k], 0);
+  const total = sum("total");
+  const claim = data.claim_total != null && data.claim_total !== "" ? Number(data.claim_total) : null;
+  return {
+    rate, rows,
+    duty: sum("duty"), vat: sum("vat"), ats: sum("ats"), total,
+    diff: claim == null ? null : total - claim,
+  };
+}
+
+// شيك المطالبة الجمركية: صورة الشهادة → Claude يستخرج البيانات → بلوك جديد في الشيت بنفس المعادلات
+import Anthropic from "https://cdn.jsdelivr.net/npm/@anthropic-ai/sdk@0.130.0/+esm";
+
+const MODEL = "claude-opus-5-5";
+const STORE_KEY = "customs_claude_api_key";
+const MAX_IMG_EDGE = 2200; // تصغير صور الموبايل الكبيرة قبل الإرسال
+
+const $ = (id) => document.getElementById(id);
+const fmt = (n) => (n == null || isNaN(n)) ? "—" :
+  Number(n).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const num = (v) => {
+  const t = String(v ?? "").replace(/[,\s]/g, "").replace(/[٠-٩]/g, d => "٠١٢٣٤٥٦٧٨٩".indexOf(d));
+  return t === "" ? null : Number(t);
+};
+
+let files = [];
+let workbook = null;
+let workbookName = "شيك مطالبة.xlsx";
+let current = null;      // البيانات اللي بتتراجع دلوقتي
+let addedCount = 0;
+
+function toast(msg, bad = false) {
+  const el = $("toast");
+  el.textContent = msg;
+  el.className = "toast" + (bad ? " bad" : "");
+  el.style.display = "block";
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => el.style.display = "none", 3500);
+}
+
+// ---------------- Workbook ----------------
+function setWbStatus() {
+  if (!workbook) { $("wbStatus").textContent = "لم يتم اختيار ملف."; return; }
+  const ws = getOrCreateSheet(workbook);
+  $("wbStatus").innerHTML = `📄 <b>${esc(workbookName)}</b> — شيت "${esc(ws.name)}"` +
+    (addedCount ? ` — اتضاف ${addedCount} شهادة في الجلسة دي` : "");
+  $("btnDownload").disabled = !addedCount;
+}
+
+async function loadWorkbook(file) {
+  const wb = new ExcelJS.Workbook();
+  await wb.xlsx.load(await file.arrayBuffer());
+  workbook = wb;
+  workbookName = file.name;
+  addedCount = 0;
+  setWbStatus();
+  toast("تم فتح الملف ✅");
+}
+
+function newWorkbook() {
+  workbook = new ExcelJS.Workbook();
+  workbook.addWorksheet(SHEET_NAME, { views: [{ rightToLeft: true }] });
+  getOrCreateSheet(workbook);
+  workbookName = "شيك مطالبة.xlsx";
+  addedCount = 0;
+  setWbStatus();
+}
+
+async function downloadWorkbook() {
+  const buf = await workbook.xlsx.writeBuffer();
+  const blob = new Blob([buf], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = workbookName;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+}
+
+// ---------------- Files ----------------
+function renderFiles() {
+  $("fileList").innerHTML = files.map(f => `<span class="chip">${f.type === "application/pdf" ? "📄" : "🖼"} ${esc(f.name)}</span>`).join("");
+  $("btnExtract").disabled = !files.length;
+}
+
+function addFiles(list) {
+  for (const f of list) {
+    if (f.type.startsWith("image/") || f.type === "application/pdf") files.push(f);
+  }
+  renderFiles();
+}
+
+function readAsBase64(blob) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(String(r.result).split(",")[1]);
+    r.onerror = reject;
+    r.readAsDataURL(blob);
+  });
+}
+
+async function imageToJpegBase64(file) {
+  const bmp = await createImageBitmap(file);
+  const scale = Math.min(1, MAX_IMG_EDGE / Math.max(bmp.width, bmp.height));
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(bmp.width * scale);
+  canvas.height = Math.round(bmp.height * scale);
+  canvas.getContext("2d").drawImage(bmp, 0, 0, canvas.width, canvas.height);
+  const blob = await new Promise(res => canvas.toBlob(res, "image/jpeg", 0.9));
+  return readAsBase64(blob);
+}
+
+async function fileToBlock(file) {
+  if (file.type === "application/pdf") {
+    return { type: "document", source: { type: "base64", media_type: "application/pdf", data: await readAsBase64(file) } };
+  }
+  return { type: "image", source: { type: "base64", media_type: "image/jpeg", data: await imageToJpegBase64(file) } };
+}
+
+// ---------------- Claude extraction ----------------
+const nullable = (type) => ({ anyOf: [{ type }, { type: "null" }] });
+
+const SCHEMA = {
+  type: "object",
+  additionalProperties: false,
+  required: ["certificate_number", "currency", "exchange_rate", "invoice_value", "final_value",
+    "items", "items_taxes_total", "claim_total", "warnings"],
+  properties: {
+    certificate_number: nullable("string"),
+    currency: nullable("string"),
+    exchange_rate: nullable("number"),
+    invoice_value: nullable("number"),
+    final_value: nullable("number"),
+    items: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        required: ["hs_code", "duty_rate_percent", "invoice_value", "description", "duty_amount", "vat_amount", "ats_amount"],
+        properties: {
+          hs_code: { type: "string" },
+          duty_rate_percent: { type: "number" },
+          invoice_value: { type: "number" },
+          description: nullable("string"),
+          duty_amount: nullable("number"),
+          vat_amount: nullable("number"),
+          ats_amount: nullable("number"),
+        },
+      },
+    },
+    items_taxes_total: nullable("number"),
+    claim_total: nullable("number"),
+    warnings: { type: "array", items: { type: "string" } },
+  },
+};
+
+const SYSTEM = `You extract data from Egyptian customs documents (منظومة نافذة / Nafeza) for a claim-check spreadsheet.
+The user uploads photos or PDFs of one shipment: usually the customs certificate review form ("نموذج مراجعة بيانات شهادة جمركية", possibly several pages) and optionally the payment claim ("تفاصيل المطالبة").
+
+Fill the fields like this:
+- certificate_number: field 4 "رقم الافراج", digits and dashes only, e.g. "2026-614-1-453456" (drop letters like "م ن").
+- currency: field 24 "العملة" in short Arabic, e.g. "دولار", "يورو", "يوان".
+- exchange_rate: field 25 "سعر التحويل".
+- invoice_value: field 28 "قيمة الفاتورة" in the invoice currency.
+- final_value: field 30 "القيمة النهائية" in EGP (keep all decimals).
+- items: one entry per line of section 32 "سطور الفاتورة", in order. hs_code = "البند الجمركي" (10 digits), duty_rate_percent = "قيمة الوارد" percentage as a number (10.000 % -> 10), invoice_value = "قيمة الفاتورة" of that line in the invoice currency. Do not confuse the quantity (قطعة) or weight (كيلو جرام) columns with the invoice value. Descriptions may appear under the line.
+  From section 33 "حساب الضرائب و الرسوم" (same line numbers) copy duty_amount = "ضريبه الوارد", vat_amount = "ضريبه قيمه مضافه", ats_amount = "ضريبه أ.ت.ص". Use null when not visible.
+- items_taxes_total: field 34 "اجمالي ضرائب البنود".
+- claim_total: the grand total "الاجمالي" of the claim document (تفاصيل المطالبة). null if no claim document was uploaded.
+- warnings: short Arabic notes about anything unreadable, cut off, missing pages, or values you are unsure about. Empty if everything is clear.
+
+Numbers: output plain numbers (no thousands separators). Convert Arabic-Indic digits. Never guess a value you cannot read — use null and add a warning.`;
+
+async function extract() {
+  const apiKey = localStorage.getItem(STORE_KEY);
+  if (!apiKey) { openSettings(); return toast("حط الـ API key الأول", true); }
+
+  $("btnExtract").disabled = true;
+  $("extractMsg").textContent = "⏳ جاري قراءة الملفات…";
+  try {
+    const blocks = [];
+    for (const f of files) blocks.push(await fileToBlock(f));
+
+    const client = new Anthropic({ apiKey, dangerouslyAllowBrowser: true });
+    const response = await client.beta.messages.create({
+      model: MODEL,
+      max_tokens: 16000,
+      betas: ["server-side-fallback-2026-07-01"],
+      fallbacks: "default",
+      output_config: { effort: "high", format: { type: "json_schema", schema: SCHEMA } },
+      system: SYSTEM,
+      messages: [{
+        role: "user",
+        content: [...blocks, { type: "text", text: "استخرج بيانات الشهادة والمطالبة من الملفات دي." }],
+      }],
+    });
+
+    if (response.stop_reason === "refusal") throw new Error("الطلب اترفض من الموديل، جرب صورة أوضح.");
+    if (response.stop_reason === "max_tokens") throw new Error("الرد اتقطع، جرب عدد صفحات أقل.");
+    const text = response.content.filter(b => b.type === "text").map(b => b.text).join("");
+    const data = JSON.parse(text);
+
+    current = {
+      certificate_number: data.certificate_number || "",
+      currency: data.currency || "دولار",
+      invoice_value: data.invoice_value,
+      final_value: data.final_value,
+      claim_total: data.claim_total,
+      items_taxes_total: data.items_taxes_total,
+      items: data.items || [],
+      warnings: data.warnings || [],
+    };
+    $("extractMsg").textContent = "✅ تم الاستخراج — راجع البيانات تحت.";
+    renderReview();
+  } catch (e) {
+    let msg = e.message || String(e);
+    if (e instanceof Anthropic.AuthenticationError) msg = "الـ API key غلط";
+    else if (e instanceof Anthropic.RateLimitError) msg = "ضغط على الخدمة، استنى شوية وجرب تاني";
+    else if (e instanceof Anthropic.APIConnectionError) msg = "مفيش اتصال بالإنترنت أو الخدمة مش متاحة";
+    $("extractMsg").textContent = "❌ " + msg;
+    toast(msg, true);
+  } finally {
+    $("btnExtract").disabled = !files.length;
+  }
+}
+
+// ---------------- Review ----------------
+function readForm() {
+  current.certificate_number = $("fCert").value.trim();
+  current.currency = $("fCur").value.trim();
+  current.invoice_value = num($("fInv").value);
+  current.final_value = num($("fFinal").value);
+  current.claim_total = num($("fClaim").value);
+  current.items = [...$("itemsBody").querySelectorAll("tr")].map((tr, i) => ({
+    ...current.items[i],
+    hs_code: tr.querySelector("[data-k=hs]").value.trim(),
+    duty_rate_percent: num(tr.querySelector("[data-k=rate]").value) ?? 0,
+    invoice_value: num(tr.querySelector("[data-k=val]").value) ?? 0,
+  }));
+}
+
+// مقارنة الرقم المحسوب بالرقم المكتوب في الشهادة (فرق أقل من 1 جنيه = مطابق)
+function match(calc, cert) {
+  if (cert == null) return "";
+  return Math.abs(calc - cert) < 1 ? '<span class="ok">✓</span>' : `<span class="bad">✗ ${fmt(cert)}</span>`;
+}
+
+function renderReview() {
+  $("secReview").style.display = "block";
+  $("fCert").value = current.certificate_number ?? "";
+  $("fCur").value = current.currency ?? "";
+  $("fInv").value = current.invoice_value ?? "";
+  $("fFinal").value = current.final_value ?? "";
+  $("fClaim").value = current.claim_total ?? "";
+  $("itemsBody").innerHTML = current.items.map((it, i) => `
+    <tr>
+      <td>${i + 1}</td>
+      <td><input data-k="hs" value="${esc(it.hs_code)}" inputmode="numeric" style="min-width:120px" /></td>
+      <td><input data-k="rate" value="${esc(it.duty_rate_percent)}" inputmode="decimal" style="min-width:60px" /></td>
+      <td><input data-k="val" value="${esc(it.invoice_value)}" inputmode="decimal" /></td>
+      <td class="num" data-c="duty"></td><td class="num" data-c="vat"></td>
+      <td class="num" data-c="ats"></td><td class="num" data-c="total"></td>
+      <td data-c="match"></td>
+      <td><button class="btn" data-del="${i}" title="حذف">🗑</button></td>
+    </tr>`).join("");
+  $("warnings").innerHTML = (current.warnings || []).map(w => `<li>⚠ ${esc(w)}</li>`).join("");
+  recalc();
+  $("secReview").scrollIntoView({ behavior: "smooth" });
+}
+
+function recalc() {
+  readForm();
+  const p = previewTotals(current);
+  $("fRate").value = p.rate ? p.rate.toFixed(4) : "";
+  const trs = $("itemsBody").querySelectorAll("tr");
+  p.rows.forEach((r, i) => {
+    const it = current.items[i];
+    const tr = trs[i];
+    tr.querySelector("[data-c=duty]").textContent = fmt(r.duty);
+    tr.querySelector("[data-c=vat]").textContent = fmt(r.vat);
+    tr.querySelector("[data-c=ats]").textContent = fmt(r.ats);
+    tr.querySelector("[data-c=total]").textContent = fmt(r.total);
+    tr.querySelector("[data-c=match]").innerHTML =
+      [match(r.duty, it.duty_amount), match(r.vat, it.vat_amount), match(r.ats, it.ats_amount)].filter(Boolean).join(" ");
+  });
+  $("itemsFoot").innerHTML = `
+    <tr>
+      <th colspan="4">الإجمالي</th>
+      <th>${fmt(p.duty)}</th><th>${fmt(p.vat)}</th><th>${fmt(p.ats)}</th><th>${fmt(p.total)}</th>
+      <th colspan="2">${match(p.total, current.items_taxes_total)}</th>
+    </tr>`;
+
+  const invSum = current.items.reduce((s, it) => s + (Number(it.invoice_value) || 0), 0);
+  const checks = [];
+  if (current.invoice_value != null) {
+    checks.push(Math.abs(invSum - current.invoice_value) < 0.05
+      ? `<span class="ok">✓ مجموع البنود = قيمة الفاتورة (${fmt(invSum)})</span>`
+      : `<span class="bad">✗ مجموع البنود ${fmt(invSum)} ≠ قيمة الفاتورة ${fmt(current.invoice_value)}</span>`);
+  }
+  if (p.diff != null) checks.push(`الفرق بين الشيك المحسوب والمطالبة: <b>${fmt(p.diff)}</b>`);
+  $("checks").innerHTML = checks.join("<br>");
+}
+
+function addItem() {
+  readForm();
+  current.items.push({ hs_code: "", duty_rate_percent: 0, invoice_value: 0 });
+  renderReview();
+}
+
+function appendToWorkbook() {
+  if (!workbook) newWorkbook();
+  readForm();
+  if (!current.invoice_value || !current.final_value) return toast("قيمة الفاتورة والقيمة النهائية مطلوبين", true);
+  try {
+    const { startRow, totalRow } = appendClaimBlock(workbook, current);
+    addedCount++;
+    setWbStatus();
+    toast(`✅ اتضافت في الصفوف ${startRow}–${totalRow}. دوس "تحميل" لما تخلص.`);
+  } catch (e) {
+    toast(e.message || String(e), true);
+  }
+}
+
+// ---------------- Settings ----------------
+function openSettings() {
+  $("apiKeyInput").value = localStorage.getItem(STORE_KEY) || "";
+  $("ov").style.display = "flex";
+}
+function saveSettings() {
+  localStorage.setItem(STORE_KEY, $("apiKeyInput").value.trim());
+  $("ov").style.display = "none";
+  toast("تم الحفظ ✅");
+}
+
+// ---------------- Wiring ----------------
+document.addEventListener("DOMContentLoaded", () => {
+  $("btnSettings").onclick = openSettings;
+  $("btnCloseSettings").onclick = () => $("ov").style.display = "none";
+  $("btnSaveSettings").onclick = saveSettings;
+
+  $("xlsxInput").onchange = (e) => e.target.files[0] && loadWorkbook(e.target.files[0]).catch(err => toast("مش قادر أفتح الملف: " + err.message, true));
+  $("btnNewWb").onclick = () => { newWorkbook(); toast("ملف جديد ✅"); };
+  $("btnDownload").onclick = downloadWorkbook;
+
+  $("imgInput").onchange = (e) => { addFiles(e.target.files); e.target.value = ""; };
+  const drop = $("drop");
+  drop.ondragover = (e) => { e.preventDefault(); drop.classList.add("over"); };
+  drop.ondragleave = () => drop.classList.remove("over");
+  drop.ondrop = (e) => { e.preventDefault(); drop.classList.remove("over"); addFiles(e.dataTransfer.files); };
+  $("btnClear").onclick = () => { files = []; renderFiles(); $("extractMsg").textContent = ""; };
+  $("btnExtract").onclick = extract;
+
+  $("itemsBody").addEventListener("input", recalc);
+  $("itemsBody").addEventListener("click", (e) => {
+    const i = e.target.closest("[data-del]")?.dataset.del;
+    if (i == null) return;
+    readForm();
+    current.items.splice(Number(i), 1);
+    renderReview();
+  });
+  ["fInv", "fFinal", "fClaim"].forEach(id => $(id).addEventListener("input", recalc));
+  $("btnAddItem").onclick = addItem;
+  $("btnAppend").onclick = appendToWorkbook;
+
+  if (!localStorage.getItem(STORE_KEY)) openSettings();
+});
+
+</script>
+</body>
+</html>
